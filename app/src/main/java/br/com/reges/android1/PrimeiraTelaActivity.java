@@ -1,6 +1,8 @@
 package br.com.reges.android1;
 
 import android.app.Activity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +14,7 @@ import android.widget.Toast;
 /**
  * Created by matheus on 08/08/2016.
  */
-public class PrimeiraTela extends Activity{
+public class PrimeiraTelaActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,29 +23,34 @@ public class PrimeiraTela extends Activity{
 
         ListView listaDeNomes = (ListView)findViewById(R.id.listaDeNomes);
 
-        String[] alunos = {"João", "Carlos", "Pedro", "José"};
+        String[] alunos = {"João Paulo", "Carlos", "Pedro", "José"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, alunos);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
 
         listaDeNomes.setAdapter(adapter);
+
+        final Intent intent = new Intent(this, SegundaTelaActivity.class);
 
         listaDeNomes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view,
                                     int position, long l) {
-                Toast.makeText(PrimeiraTela.this, "Posição = " +
+                Toast.makeText(PrimeiraTelaActivity.this, "Posição = " +
                         position, Toast.LENGTH_LONG).show();
+
+                if(position == 0){
+                    startActivity(intent);
+                }
             }
         });
 
-        Log.i("Teste", "onCreate()");
+        Log.i("Log", "onCreate()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("Teste", "onStart()");
+        Log.i("Log", "onStart()");
     }
 
     @Override
@@ -55,24 +62,24 @@ public class PrimeiraTela extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("Teste", "onPause()");
+        Log.i("Log", "onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("Teste", "onStop()");
+        Log.i("Log", "onStop()");
     }
 
     @Override
     protected void onDestroy() {
-        Log.i("Teste", "onDestroy()");
+        Log.i("Log", "onDestroy()");
         super.onDestroy();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.i("Teste", "onRestart()");
+        Log.i("Log", "onRestart()");
     }
 }

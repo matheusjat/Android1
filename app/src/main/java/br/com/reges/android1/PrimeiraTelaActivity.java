@@ -4,7 +4,9 @@ import android.app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 /**
  * Created by matheus on 08/08/2016.
  */
-public class PrimeiraTelaActivity extends Activity{
+public class PrimeiraTelaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,39 +49,21 @@ public class PrimeiraTelaActivity extends Activity{
         Log.i("Log", "onCreate()");
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("Log", "onStart()");
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        ((Activity) this).openOptionsMenu();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("Log", "onResume()");
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        menu.add("Nova Loja");
+        menu.add("Localizar Loja");
+        menu.add("Preferencias");
+        menu.add("Sair");
+
+        return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("Log", "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("Log", "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.i("Log", "onDestroy()");
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("Log", "onRestart()");
-    }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/novaemp_menu"
+        android:title="Nova Empresa"/>
+
+    <item android:id="@+id/locloja_menu"
+        android:title="Localizar Lojas"/>
+
+    <item android:id="@+id/pref_menu"
+        android:title="Preferências"/>
+
+    <item android:id="@+id/sair_menu"
+        android:title="Sair"/>
+
+
+</menu>

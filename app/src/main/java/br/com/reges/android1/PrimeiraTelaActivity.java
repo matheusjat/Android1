@@ -34,7 +34,7 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
         setContentView(R.layout.primeiratela_activity);
 
         ListView listaDeNomes = (ListView) findViewById(R.id.listaDeNomes);
-
+        Log.i("Activit1", "Instânciando a lista de nomes" );
         registerForContextMenu(listaDeNomes);
 
         String[] alunos = {"Fast Shop", "Ricardo Eletro", "Casas Bahia", "Ponto Frio"};

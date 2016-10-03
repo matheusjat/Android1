@@ -6,4 +6,5 @@
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
     android:text="Item 1"
     android:textSize="30dp"
-    android:textStyle="bold" />
+    android:textStyle="bold"
+    />

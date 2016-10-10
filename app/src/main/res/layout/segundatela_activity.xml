@@ -11,7 +11,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nome" />
+        android:id="@+id/form_nome" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/end" />
+        android:id="@+id/form_end" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/site" />
+        android:id="@+id/form_site" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,13 +41,13 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/avaliacao"
+        android:id="@+id/form_avaliacao"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar"
-        android:id="@+id/botaoSalvar" />
+        android:id="@+id/form_botaoSalvar" />
 
 </LinearLayout>

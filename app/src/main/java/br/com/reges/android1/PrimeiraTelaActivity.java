@@ -2,13 +2,11 @@ package br.com.reges.android1;
 
 import android.Manifest;
 import android.app.Activity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +21,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.reges.modelo.Loja;
+
 /**
  * Created by matheus on 08/08/2016.
  */
@@ -34,12 +37,16 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
         setContentView(R.layout.primeiratela_activity);
 
         ListView listaDeNomes = (ListView) findViewById(R.id.listaDeNomes);
-        Log.i("Activit1", "Instânciando a lista de nomes" );
+        Log.i("Activit1", "Instânciando a lista de nomes");
         registerForContextMenu(listaDeNomes);
 
-        String[] alunos = {"Fast Shop", "Ricardo Eletro", "Casas Bahia", "Ponto Frio"};
+//        String[] alunos = {"Fast Shop", "Ricardo Eletro", "Casas Bahia", "Ponto Frio"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
+        List<Loja> lojas = new ArrayList<Loja>(); //pegar lista do banco!!
+
+
+        ArrayAdapter<Loja> adapter = new ArrayAdapter<Loja>(this,
+                android.R.layout.simple_list_item_1, lojas);
 
         listaDeNomes.setAdapter(adapter);
 
@@ -89,7 +96,7 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
                 Uri numeroParaDiscagem = Uri.parse("tel: " + fone);
                 irParaDiscagem.setData(numeroParaDiscagem);
 
-                if(PackageManager.PERMISSION_GRANTED ==
+                if (PackageManager.PERMISSION_GRANTED ==
                         ContextCompat.checkSelfPermission(PrimeiraTelaActivity.this,
                                 Manifest.permission.CALL_PHONE)) {
                     startActivity(irParaDiscagem);
@@ -108,7 +115,7 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.novaemp_menu:
                 Intent intent = new Intent(this, SegundaTelaActivity.class);
                 startActivity(intent);

@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import br.com.reges.modelo.Loja;
 
 /**
  * Created by matheus on 22/08/2016.
@@ -17,6 +21,19 @@ public class SegundaTelaActivity extends AppCompatActivity {
         setContentView(R.layout.segundatela_activity);
         Log.i("Log", "SegundaTelaActivity onCreate()");
 
+        Button salvar = (Button) findViewById(R.id.form_botaoSalvar);
+
+
+        salvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Loja loja = RetornaLoja.exec(SegundaTelaActivity.this);
+
+//                Salvar No Banco!!!
+
+                finish();
+            }
+        });
     }
 
 

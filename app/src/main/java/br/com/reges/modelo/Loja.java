@@ -6,13 +6,13 @@ package br.com.reges.modelo;
 public class Loja {
 
     private String nome;
-    private String end;
+    private String email;
     private String site;
     private float nota;
 
-    public Loja(String nome, String end, String site, float nota) {
+    public Loja(String nome, String email, String site, float nota) {
         this.nome = nome;
-        this.end = end;
+        this.email = email;
         this.site = site;
         this.nota = nota;
     }
@@ -29,12 +29,12 @@ public class Loja {
         this.nome = nome;
     }
 
-    public String getEnd() {
-        return end;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSite() {

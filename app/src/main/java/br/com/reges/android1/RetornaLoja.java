@@ -12,18 +12,18 @@ public class RetornaLoja {
 
     public static Loja exec(SegundaTelaActivity form) {
         EditText nome_ET;
-        EditText end_ET;
+        EditText email_ET;
         EditText site_ET;
         RatingBar nota_ET;
         Loja loja;
 
         nome_ET = (EditText) form.findViewById(R.id.form_nome);
-        end_ET = (EditText) form.findViewById(R.id.form_end);
+        email_ET = (EditText) form.findViewById(R.id.form_email);
         site_ET = (EditText) form.findViewById(R.id.form_site);
         nota_ET = (RatingBar) form.findViewById(R.id.form_avaliacao);
 
         String nome = nome_ET.getText().toString();
-        String end = end_ET.getText().toString();
+        String end = email_ET.getText().toString();
         String site = site_ET.getText().toString();
         float nota = nota_ET.getRating();
 

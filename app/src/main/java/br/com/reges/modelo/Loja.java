@@ -5,12 +5,13 @@ package br.com.reges.modelo;
  */
 public class Loja {
 
+    private int ID;
     private String nome;
     private String email;
     private String site;
     private float nota;
 
-    public Loja(String nome, String email, String site, float nota) {
+    public Loja( String nome, String email, String site, float nota) {
         this.nome = nome;
         this.email = email;
         this.site = site;
@@ -19,6 +20,14 @@ public class Loja {
 
     public Loja(){
 
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getNome() {

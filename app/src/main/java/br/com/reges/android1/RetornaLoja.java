@@ -23,11 +23,11 @@ public class RetornaLoja {
         nota_ET = (RatingBar) form.findViewById(R.id.form_avaliacao);
 
         String nome = nome_ET.getText().toString();
-        String end = email_ET.getText().toString();
+        String email = email_ET.getText().toString();
         String site = site_ET.getText().toString();
         float nota = nota_ET.getRating();
 
-        loja = new Loja(nome, end, site, nota);
+        loja = new Loja(nome, email, site, nota);
         return loja;
     }
 }

@@ -48,7 +48,7 @@ public class LojaDAO extends SQLiteOpenHelper {
 
     }
 
-    public void Insert(Loja loja) {
+    public void insert(Loja loja) {
 
         ContentValues cv = new ContentValues();
 

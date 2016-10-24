@@ -61,4 +61,9 @@ public class Loja {
     public void setNota(float nota) {
         this.nota = nota;
     }
+
+    @Override
+    public String toString() {
+        return ID + " - " + nome;
+    }
 }

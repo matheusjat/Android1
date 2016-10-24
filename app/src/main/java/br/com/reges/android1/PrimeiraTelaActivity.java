@@ -24,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.reges.Database.LojaDAO;
 import br.com.reges.modelo.Loja;
 
 /**
@@ -35,6 +36,14 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.primeiratela_activity);
+        Log.i("Log", "onCreate()");
+    }
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         ListView listaDeNomes = (ListView) findViewById(R.id.listaDeNomes);
         Log.i("Activit1", "Instânciando a lista de nomes");
@@ -43,7 +52,11 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
 //        String[] alunos = {"Fast Shop", "Ricardo Eletro", "Casas Bahia", "Ponto Frio"};
 
         List<Loja> lojas = new ArrayList<Loja>(); //pegar lista do banco!!
+        LojaDAO lojaDAO = new LojaDAO(this);
 
+        Loja loja = new Loja();
+
+        lojas = lojaDAO.list();
 
         ArrayAdapter<Loja> adapter = new ArrayAdapter<Loja>(this,
                 android.R.layout.simple_list_item_1, lojas);
@@ -67,7 +80,6 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
             }
         });
 
-        Log.i("Log", "onCreate()");
     }
 
     public void onAttachedToWindow() {
@@ -107,7 +119,19 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
         });
 
         menu.add("Ir para o site");
-        menu.add("Apagar");
+        MenuItem apagar = menu.add("Apagar");
+        apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                LojaDAO lojaDAO = new LojaDAO(PrimeiraTelaActivity.this);
+                Loja loja = new Loja();
+                loja.setID(item.getItemId());
+                lojaDAO.delete(loja);
+
+                return false;
+            }
+        });
 
         super.onCreateContextMenu(menu, v, menuInfo);
 

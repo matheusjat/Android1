@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import br.com.reges.Database.LojaDAO;
 import br.com.reges.modelo.Loja;
 
 /**
@@ -29,7 +30,8 @@ public class SegundaTelaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Loja loja = RetornaLoja.exec(SegundaTelaActivity.this);
 
-//                Salvar No Banco!!!
+                LojaDAO lojaDAO = new LojaDAO(SegundaTelaActivity.this);
+                lojaDAO.insert(loja);
 
                 finish();
             }

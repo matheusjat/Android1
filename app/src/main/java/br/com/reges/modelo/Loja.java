@@ -8,18 +8,28 @@ public class Loja {
     private int ID;
     private String nome;
     private String email;
+    private String tel;
     private String site;
     private float nota;
 
-    public Loja( String nome, String email, String site, float nota) {
+    public Loja( String nome, String email, String tel, String site, float nota) {
         this.nome = nome;
         this.email = email;
+        this.tel = tel;
         this.site = site;
         this.nota = nota;
     }
 
     public Loja(){
 
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public int getID() {

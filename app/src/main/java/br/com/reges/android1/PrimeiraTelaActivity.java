@@ -32,6 +32,9 @@ import br.com.reges.modelo.Loja;
  */
 public class PrimeiraTelaActivity extends AppCompatActivity {
 
+    private List<Loja> lojas;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,7 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
 
 //        String[] alunos = {"Fast Shop", "Ricardo Eletro", "Casas Bahia", "Ponto Frio"};
 
-        List<Loja> lojas = new ArrayList<Loja>(); //pegar lista do banco!!
+        lojas = new ArrayList<Loja>(); //pegar lista do banco!!
         LojaDAO lojaDAO = new LojaDAO(this);
 
         Loja loja = new Loja();
@@ -66,8 +69,7 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
         listaDeNomes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(PrimeiraTelaActivity.this, "Posição = " +
-                        position, Toast.LENGTH_LONG).show();
+                Toast.makeText(PrimeiraTelaActivity.this, "Posição = " + position, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -104,7 +106,14 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent irParaDiscagem = new Intent(Intent.ACTION_CALL);
-                String fone = "16987654321";
+
+                Loja loja = new Loja();
+
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+                loja = lojas.get(info.position);
+
+                String fone = loja.getTel();
                 Uri numeroParaDiscagem = Uri.parse("tel: " + fone);
                 irParaDiscagem.setData(numeroParaDiscagem);
 
@@ -126,8 +135,13 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
 
                 LojaDAO lojaDAO = new LojaDAO(PrimeiraTelaActivity.this);
                 Loja loja = new Loja();
-                loja.setID(item.getItemId());
+
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+                loja = lojas.get(info.position);
                 lojaDAO.delete(loja);
+
+                onStart();
 
                 return false;
             }

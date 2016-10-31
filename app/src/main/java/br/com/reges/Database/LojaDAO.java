@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class LojaDAO extends SQLiteOpenHelper {
 
 
     private static final String DBNAME = "LojasDB";
-    private static final int version = 1;
+    private static final int version = 2;
     private static final String TABLE = "Lojas";
 
     public LojaDAO(Context context) {
@@ -32,6 +33,7 @@ public class LojaDAO extends SQLiteOpenHelper {
                 + "id INTEGER PRIMARY KEY, "
                 + "nome TEXT UNIQUE NOT NULL, "
                 + "email TEXT, "
+                + "tel TEXT, "
                 + "site TEXT, "
                 + "nota DECIMAL"
                 + ");";
@@ -55,6 +57,7 @@ public class LojaDAO extends SQLiteOpenHelper {
         cv.put("nome", loja.getNome());
         cv.put("site", loja.getSite());
         cv.put("email", loja.getEmail());
+        cv.put("tel", loja.getTel());
         cv.put("nota", loja.getNota());
 
         getReadableDatabase().insert(TABLE, null, cv);
@@ -76,6 +79,7 @@ public class LojaDAO extends SQLiteOpenHelper {
             loja.setID(cursor.getInt(cursor.getColumnIndex("id")));
             loja.setNome(cursor.getString(cursor.getColumnIndex("nome")));
             loja.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            loja.setTel(cursor.getString(cursor.getColumnIndex("tel")));
             loja.setSite(cursor.getString(cursor.getColumnIndex("site")));
             loja.setNota(cursor.getFloat(cursor.getColumnIndex("nota")));
 
@@ -93,6 +97,7 @@ public class LojaDAO extends SQLiteOpenHelper {
         cv.put("nome", loja.getNome());
         cv.put("site", loja.getSite());
         cv.put("email", loja.getEmail());
+        cv.put("tel", loja.getEmail());
         cv.put("nota", loja.getNota());
 
         getReadableDatabase().update(TABLE,cv, "id=?",
@@ -101,7 +106,6 @@ public class LojaDAO extends SQLiteOpenHelper {
     }
 
     public void delete(Loja loja){
-
         getReadableDatabase().delete(TABLE, "id=?",
                 new String[]{String.valueOf(loja.getID())});
 

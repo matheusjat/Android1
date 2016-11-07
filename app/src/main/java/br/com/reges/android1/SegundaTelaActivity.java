@@ -1,14 +1,12 @@
 package br.com.reges.android1;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import br.com.reges.Database.LojaDAO;
+import br.com.reges.database.LojaDAO;
 import br.com.reges.modelo.Loja;
 
 /**

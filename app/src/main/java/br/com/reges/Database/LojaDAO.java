@@ -1,11 +1,10 @@
-package br.com.reges.Database;
+package br.com.reges.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class LojaDAO extends SQLiteOpenHelper {
 
 
     private static final String DBNAME = "LojasDB";
-    private static final int version = 2;
+    private static final int version = 4;
     private static final String TABLE = "Lojas";
 
     public LojaDAO(Context context) {

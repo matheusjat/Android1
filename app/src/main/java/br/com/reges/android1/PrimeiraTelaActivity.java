@@ -24,7 +24,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.reges.Database.LojaDAO;
+import br.com.reges.adapter.LojaAdapter;
+import br.com.reges.database.LojaDAO;
 import br.com.reges.modelo.Loja;
 
 /**
@@ -61,8 +62,9 @@ public class PrimeiraTelaActivity extends AppCompatActivity {
 
         lojas = lojaDAO.list();
 
-        ArrayAdapter<Loja> adapter = new ArrayAdapter<Loja>(this,
-                android.R.layout.simple_list_item_1, lojas);
+        Log.i("Erro", "PrimeiraTelaActivity");
+
+        LojaAdapter adapter = new LojaAdapter(this, lojas);
 
         listaDeNomes.setAdapter(adapter);
 
